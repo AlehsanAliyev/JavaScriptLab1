@@ -8,6 +8,17 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+function reverseInt(n) {
+    let reversed = 0;  
+    let num = Math.abs(n); 
+
+    while (num > 0) {
+        reversed = reversed * 10 + (num % 10);  
+        num = Math.floor(num / 10);  
+    }
+
+    return n < 0 ? -reversed : reversed;  
+}
+
 
 module.exports = reverseInt;

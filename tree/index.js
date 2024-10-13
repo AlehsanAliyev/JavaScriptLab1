@@ -10,8 +10,51 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+    constructor(element){
+        this.data = element;
+        this.children =[];
+    }
+    add(element){
+        this.children.push(new Node(element));
+    }
+    remove(element){
+        this.children.splice(this.children.indexOf(element), 1);
+    }
+}
 
-class Tree {}
+class Tree {
+    constructor() {
+        this.root = null;
+    }
 
+
+    traverseBF(fn) {
+        const queue = [this.root]; 
+
+        while (queue.length) {
+            const node = queue.shift(); 
+            fn(node);
+
+
+            queue.push(...node.children);
+        }
+    }
+
+    // Depth-First Traversal (DF)
+    traverseDF(fn) {
+        function traverse(node) {
+            fn(node); 
+
+
+            for (let child of node.children) {
+                traverse(child);
+            }
+        }
+
+        if (this.root) {
+            traverse(this.root);
+        }
+    }
+}
 module.exports = { Tree, Node };

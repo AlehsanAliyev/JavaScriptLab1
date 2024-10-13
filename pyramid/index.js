@@ -14,6 +14,27 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    my_char = '#';
+    center =n -1 ;
+    
+    for (let i = 0; i < n; i++) {
+        my_str = '';
+        for (let j = 0; j < 2*n -1; j++) {
+            if(j >= center - i && j <= center + i){
+                my_str += my_char;
+            }
+            else{
+                my_str += ' ';
+            }
+            
+        }
+        console.log(my_str);
+                
+        
+    }
+}
+
+
 
 module.exports = pyramid;
